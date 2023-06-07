@@ -81,6 +81,7 @@ body{
 .board-display{
     background-image: url(https://codebrainer.azureedge.net/images/tic-tac-toe_04.png);
     background-size: cover;
+    background-position: center;
     display: flex;
     width: 75%;
     height: 75%;

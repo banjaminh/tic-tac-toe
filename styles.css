@@ -1,0 +1,88 @@
+.player-2,
+.player-1 {
+    height: 100vh;
+    width: 25vw;
+    border: solid black;
+    background-image: url(https://t4.ftcdn.net/jpg/01/62/92/63/360_F_162926341_LKyle11bM4ODu3GrbjmropDS2jhEsso4.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+
+.board {
+    height: 100vh;
+    width: 50vw;
+    border: solid black;
+}
+
+.player-2 {
+    width: 100vh;
+    width: 25vw;
+    border: solid black;
+    display: flex;
+    justify-content: center;
+    
+}
+
+body{
+    display: flex;
+}
+
+.player-1-wins-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 10%;
+    border: solid blue;
+    margin-top: 20%;
+}
+
+.player-2-wins-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 10%;
+    border: solid blue;
+    margin-top: 20%;
+}
+
+.turn-display{
+    height: 30%;
+    border: solid green;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.board{
+    display: flex;
+    flex-direction: column;
+    border: solid purple;
+}
+#display-turn{
+    border: solid yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-section{
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid orange;
+}
+
+.board-display{
+    background-image: url(https://codebrainer.azureedge.net/images/tic-tac-toe_04.png);
+    background-size: cover;
+    display: flex;
+    width: 75%;
+    height: 75%;
+    border: solid red;
+}

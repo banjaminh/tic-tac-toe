@@ -2,14 +2,23 @@ var boardDisplay = document.querySelector('.board-display');
 
 
 window.addEventListener('load', showBoard);
-
 var gameBoard = 
 [0,'','',
 0,1,'',
 '','',''];
 
+var player1 = createPlayer(1,'x');
+var player2 = createPlayer(2,'o');
+var currentPlayer = player1;
+var startingPlayer = player1;
 
-
+function createPlayer(id,token){
+    return{
+    id,
+    token,
+    wins: 0,
+}
+}
 
 function checkWin() {
     for (var i = 0; i < gameBoard.length; i+=3){
@@ -35,7 +44,7 @@ function checkWin() {
 
 
 function showBoard(){
-    console.log("test")
+    
     boardDisplay.innerHTML = "";
     for(var i = 0; i < gameBoard.length ; i ++){
         boardDisplay.innerHTML += `

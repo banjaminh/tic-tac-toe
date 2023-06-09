@@ -81,8 +81,18 @@ body{
 .board-display{
     background-image: url(https://codebrainer.azureedge.net/images/tic-tac-toe_04.png);
     background-size: cover;
-    display: flex;
+    background-position: center;
     width: 75%;
     height: 75%;
-    border: solid red;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr)
+}
+
+.mini-grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid black;
+    cursor: pointer;
 }

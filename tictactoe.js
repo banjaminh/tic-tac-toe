@@ -2,6 +2,11 @@ var boardDisplay = document.querySelector('.board-display');
 
 
 window.addEventListener('load', showBoard);
+boardDisplay.addEventListener('click', function(e){
+    playerMove(e)
+});
+
+
 var gameBoard = 
 [0,'','',
 0,1,'',
@@ -17,23 +22,23 @@ function createPlayer(id,token){
     id,
     token,
     wins: 0,
-}
+    }
 }
 
 function checkWin() {
     for (var i = 0; i < gameBoard.length; i+=3){
-        if(gameBoard[i] === gameBoard[i+1] && gameBoard[i+2] === gameBoard[i] && gameboard[i+2] != ''){
+        if(gameBoard[i] === gameBoard[i+1] && gameBoard[i+2] === gameBoard[i] && gameBoard[i+2] != ''){
         return console.log("WIN");
         }
     }
     
     for (var i = 0; i< gameBoard.length; i++){
-        if(gameBoard[i] === gameBoard[i+3] && gameBoard[i] === gameBoard[i+6] && gameboard[i] !== ''){
+        if(gameBoard[i] === gameBoard[i+3] && gameBoard[i] === gameBoard[i+6] && gameBoard[i] !== ''){
             return console.log("WIN");
         }
     }
 
-    if (gameBoard.top[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== ''){
+    if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== ''){
         return console.log("WIN");
     }
     else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[2] !== ''){
@@ -53,8 +58,22 @@ function showBoard(){
         </section>
         `
     }
-
 }
+
+function playerMove(e){
+    console.log('test');
+    var chosenIndex = parseInt(e.target.closest('section').id);
+    if(gameBoard[chosenIndex] === ''){
+        gameBoard[chosenIndex] = currentPlayer.token;
+    }
+    else{
+        return console.log("INVALID SPOT");
+    }
+    showBoard();
+    checkWin();
+}
+
+
 
 
 

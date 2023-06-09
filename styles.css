@@ -94,4 +94,5 @@ body{
     justify-content: center;
     align-items: center;
     border: solid black;
+    cursor: pointer;
 }

@@ -8,14 +8,15 @@ boardDisplay.addEventListener('click', function(e){
 
 
 var gameBoard = 
-[0,'','',
-0,1,'',
+['','','',
+'','','',
 '','',''];
 
 var player1 = createPlayer(1,'x');
 var player2 = createPlayer(2,'o');
 var currentPlayer = player1;
 var startingPlayer = player1;
+var moveCount = 0;
 
 function createPlayer(id,token){
     return{
@@ -60,23 +61,47 @@ function showBoard(){
     }
 }
 
+function playerSwap(){
+    if(currentPlayer === player1){
+        currentPlayer = player2;
+    }
+    else{
+        currentPlayer = player1;
+    }
+}
+
 function playerMove(e){
     console.log('test');
     var chosenIndex = parseInt(e.target.closest('section').id);
     if(gameBoard[chosenIndex] === ''){
         gameBoard[chosenIndex] = currentPlayer.token;
+        moveCount++;
     }
     else{
         return console.log("INVALID SPOT");
     }
     showBoard();
     checkWin();
+    checkCount();
+    playerSwap();
 }
 
+function resetBoard(){
+    for (var i = 0; i < gameBoard.length ; i++){
+        gameBoard[i] = '';
+    }
+    showBoard();
+}
 
-
-
-
+function checkCount(){
+    if (moveCount === 9){
+        console.log("RESET");
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 // function checkWin() {
 //     var arrays = ['top','middle','bottom'];

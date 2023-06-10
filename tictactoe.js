@@ -3,12 +3,15 @@ var player1Box = document.getElementById('player-1-wins');
 var player2Box = document.getElementById('player-2-wins');
 var turnBox = document.getElementById('display-turn');
 
+
 window.addEventListener('load', showBoard)
 window.addEventListener('load', function(e){
 displayTurn(undefined)
 });
 boardDisplay.addEventListener('click', function(e){
-    playerMove(e)
+    if(!gameOver){
+        playerMove(e);
+    }
 });
 
 
@@ -21,6 +24,7 @@ var player1 = createPlayer(1,'😡');
 var player2 = createPlayer(2,'😂');
 var currentPlayer = player1;
 var startingPlayer = player1;
+var gameOver = false;
 
 
 function createPlayer(id,token){
@@ -80,18 +84,22 @@ function playerMove(e){
         gameBoard[chosenIndex] = currentPlayer.token;
     }
     else{
-        return console.log("INVALID SPOT");
+        return;
     }
     showBoard();
     if(checkWin()){
+        gameOver = true;
         displayTurn('win');
         setTimeout(resetBoard, 3000);
+        setTimeout(resetGame, 3000);
         updateWin();
         return;
     }
     else if(checkDraw()){
         displayTurn('draw');
+        gameOver = true;
         setTimeout(resetBoard, 3000);
+        setTimeout(resetGame, 3000);
         return;
     }
     playerSwap();
@@ -103,6 +111,10 @@ function resetBoard(){
     for (var i = 0; i < gameBoard.length ; i++){
         gameBoard[i] = '';
     }
+    if(currentPlayer === startingPlayer){
+        playerSwap();
+    }
+    displayTurn()
     showBoard();
 }
 
@@ -118,11 +130,9 @@ function checkDraw(){
 
 function displayTurn(condition){
     if(condition === 'draw'){
-        console.log("DRAW1")
         turnBox.innerText = `It's a Draw!`;
     }
     else if (condition === 'win'){
-        console.log("WIN")
         turnBox.innerText = `${currentPlayer.token} wins!!`
     }
 
@@ -134,6 +144,10 @@ function displayTurn(condition){
 function updateWin(){
     player1Box.innerText = `${player1.wins} wins`
     player2Box.innerText = `${player2.wins} wins`
+}
+
+function resetGame(){
+    gameOver = false;
 }
 
 // function checkWin() {

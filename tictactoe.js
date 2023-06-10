@@ -68,7 +68,7 @@ function showBoard(){
     for(var i = 0; i < gameBoard.length ; i ++){
         boardDisplay.innerHTML += `
         <section class="mini-grid" id=${i}>
-            <p>${gameBoard[i]}</p>
+            <p class="board-icon">${gameBoard[i]}</p>
         </section>
         `
     }
@@ -123,7 +123,6 @@ function checkDraw(){
         return false;
     }
     else{
-        console.log("DRAW");
         return true;
     }
 }

@@ -1,21 +1,31 @@
 var boardDisplay = document.querySelector('.board-display');
+var player1Box = document.getElementById('player-1-wins');
+var player2Box = document.getElementById('player-2-wins');
+var turnBox = document.getElementById('display-turn');
 
 
-window.addEventListener('load', showBoard);
+window.addEventListener('load', showBoard)
+window.addEventListener('load', function(e){
+displayTurn(undefined)
+});
 boardDisplay.addEventListener('click', function(e){
-    playerMove(e)
+    if(!gameOver){
+        playerMove(e);
+    }
 });
 
 
 var gameBoard = 
-[0,'','',
-0,1,'',
+['','','',
+'','','',
 '','',''];
 
-var player1 = createPlayer(1,'x');
-var player2 = createPlayer(2,'o');
+var player1 = createPlayer(1,'😡');
+var player2 = createPlayer(2,'😂');
 var currentPlayer = player1;
 var startingPlayer = player1;
+var gameOver = false;
+
 
 function createPlayer(id,token){
     return{
@@ -28,21 +38,25 @@ function createPlayer(id,token){
 function checkWin() {
     for (var i = 0; i < gameBoard.length; i+=3){
         if(gameBoard[i] === gameBoard[i+1] && gameBoard[i+2] === gameBoard[i] && gameBoard[i+2] != ''){
-        return console.log("WIN");
+            currentPlayer.wins += 1;
+            return true;
         }
     }
     
     for (var i = 0; i< gameBoard.length; i++){
         if(gameBoard[i] === gameBoard[i+3] && gameBoard[i] === gameBoard[i+6] && gameBoard[i] !== ''){
-            return console.log("WIN");
+            currentPlayer.wins += 1;
+            return true;
         }
     }
 
     if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== ''){
-        return console.log("WIN");
+        currentPlayer.wins += 1;
+        return true;
     }
     else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[2] !== ''){
-        return console.log("WIN");
+        currentPlayer.wins += 1;
+        return true;
     }
 }
 
@@ -60,23 +74,81 @@ function showBoard(){
     }
 }
 
+function playerSwap(){
+    currentPlayer = (currentPlayer === player1) ? player2 : player1;
+}
+
 function playerMove(e){
-    console.log('test');
     var chosenIndex = parseInt(e.target.closest('section').id);
     if(gameBoard[chosenIndex] === ''){
         gameBoard[chosenIndex] = currentPlayer.token;
     }
     else{
-        return console.log("INVALID SPOT");
+        return;
     }
     showBoard();
-    checkWin();
+    if(checkWin()){
+        gameOver = true;
+        displayTurn('win');
+        setTimeout(resetBoard, 3000);
+        setTimeout(resetGame, 3000);
+        updateWin();
+        return;
+    }
+    else if(checkDraw()){
+        displayTurn('draw');
+        gameOver = true;
+        setTimeout(resetBoard, 3000);
+        setTimeout(resetGame, 3000);
+        return;
+    }
+    playerSwap();
+    displayTurn();
+    
 }
 
+function resetBoard(){
+    for (var i = 0; i < gameBoard.length ; i++){
+        gameBoard[i] = '';
+    }
+    if(currentPlayer === startingPlayer){
+        playerSwap();
+    }
+    displayTurn()
+    showBoard();
+}
 
+function checkDraw(){
+    if(gameBoard.includes('')){
+        return false;
+    }
+    else{
+        console.log("DRAW");
+        return true;
+    }
+}
 
+function displayTurn(condition){
+    if(condition === 'draw'){
+        turnBox.innerText = `It's a Draw!`;
+    }
+    else if (condition === 'win'){
+        turnBox.innerText = `${currentPlayer.token} wins!!`
+    }
 
+    else if (condition === undefined){
+        turnBox.innerText = `It's ${currentPlayer.token} turn`
+    }    
+}
 
+function updateWin(){
+    player1Box.innerText = `${player1.wins} wins`
+    player2Box.innerText = `${player2.wins} wins`
+}
+
+function resetGame(){
+    gameOver = false;
+}
 
 // function checkWin() {
 //     var arrays = ['top','middle','bottom'];

@@ -33,11 +33,11 @@ body{
 }
 
 .player-1 {
-    background-color: rgba(242, 6, 6,.5);
+    background-color: rgba(242, 6, 6,.3);
 }
 
 .player-2 {
-    background-color: rgba(0,0,255,.5);
+    background-color: rgba(0,0,255,.3);
 }
 
 body{
@@ -72,9 +72,9 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(245, 245, 245,.5);
-    
-}
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+ }
 
 .board-section{
     height: 70%;
@@ -109,6 +109,7 @@ body{
 #player-2-icon{
     font-size: 40px;
 }
+
 #player-2-wins,
 #player-1-wins{
     font-size: 30px;

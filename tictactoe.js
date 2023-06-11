@@ -136,10 +136,3 @@ function updateWin(){
     player2Box.innerText = `${player2.wins} wins`
 }
 
-// function resetGame(){
-//     gameOver = false;
-//     startingPlayer = (startingPlayer === player1) ? player2: player1;
-//     console.log("Starting Player:", startingPlayer);
-//     currentPlayer = startingPlayer;
-//     displayTurn();
-// }

@@ -15,13 +15,10 @@ boardDisplay.addEventListener('click', function(e){
 });
 
 
-var gameBoard = 
-['','','',
-'','','',
-'','',''];
+var gameBoard = ['','','','','','','','',''];
 
-var player1 = createPlayer(1,'😡');
-var player2 = createPlayer(2,'😂');
+var player1 = createPlayer(1,'🟥');
+var player2 = createPlayer(2,'🔵');
 var currentPlayer = player1;
 var startingPlayer = player1;
 var gameOver = false;
@@ -38,24 +35,20 @@ function createPlayer(id,token){
 function checkWin() {
     for (var i = 0; i < gameBoard.length; i+=3){
         if(gameBoard[i] === gameBoard[i+1] && gameBoard[i+2] === gameBoard[i] && gameBoard[i+2] != ''){
-            currentPlayer.wins += 1;
             return true;
         }
     }
     
     for (var i = 0; i< gameBoard.length; i++){
         if(gameBoard[i] === gameBoard[i+3] && gameBoard[i] === gameBoard[i+6] && gameBoard[i] !== ''){
-            currentPlayer.wins += 1;
             return true;
         }
     }
 
     if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== ''){
-        currentPlayer.wins += 1;
         return true;
     }
     else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[2] !== ''){
-        currentPlayer.wins += 1;
         return true;
     }
 }
@@ -63,12 +56,11 @@ function checkWin() {
 
 
 function showBoard(){
-    
     boardDisplay.innerHTML = "";
     for(var i = 0; i < gameBoard.length ; i ++){
         boardDisplay.innerHTML += `
         <section class="mini-grid" id=${i}>
-            <p>${gameBoard[i]}</p>
+            <p class="game-board-icon">${gameBoard[i]}</p>
         </section>
         `
     }
@@ -88,10 +80,10 @@ function playerMove(e){
     }
     showBoard();
     if(checkWin()){
+        currentPlayer.wins += 1;
         gameOver = true;
         displayTurn('win');
         setTimeout(resetBoard, 3000);
-        setTimeout(resetGame, 3000);
         updateWin();
         return;
     }
@@ -99,7 +91,6 @@ function playerMove(e){
         displayTurn('draw');
         gameOver = true;
         setTimeout(resetBoard, 3000);
-        setTimeout(resetGame, 3000);
         return;
     }
     playerSwap();
@@ -111,10 +102,10 @@ function resetBoard(){
     for (var i = 0; i < gameBoard.length ; i++){
         gameBoard[i] = '';
     }
-    if(currentPlayer === startingPlayer){
-        playerSwap();
-    }
-    displayTurn()
+    gameOver = false;
+    startingPlayer = (startingPlayer === player1) ? player2: player1;
+    currentPlayer = startingPlayer;
+    displayTurn();
     showBoard();
 }
 
@@ -123,7 +114,6 @@ function checkDraw(){
         return false;
     }
     else{
-        console.log("DRAW");
         return true;
     }
 }
@@ -146,26 +136,10 @@ function updateWin(){
     player2Box.innerText = `${player2.wins} wins`
 }
 
-function resetGame(){
-    gameOver = false;
-}
-
-// function checkWin() {
-//     var arrays = ['top','middle','bottom'];
-//     for (var i = 0; i < gameBoard.top.length; i++) {
-//       if (gameBoard.top[i] === gameBoard.middle[i] && gameBoard.middle[i] === gameBoard.bottom[i] && gameBoard.top[i] != 0) {
-//         return console.log("WIN");
-//       }
-//     }
-//     for(var i = 0; i < arrays.length; i++){
-//       if(gameBoard[arrays[i]][0] === gameBoard[arrays[i]][1] && gameBoard[arrays[i]][1] === gameBoard[arrays[i]][2] && gameBoard[arrays[i]][0] !=0 ){
-//         return console.log("WIN");
-//       }
-//     }
-//     if( gameBoard.top[0] === gameBoard.middle[1] && gameBoard.middle[1] === gameBoard.bottom[2] && gameBoard.top[0] != 0){
-//       return console.log("WIN");
-//     }
-//     else if( gameBoard.top[2] === gameBoard.middle[1] && gameBoard.middle[1] === gameBoard.bottom[0] && gameBoard.top[2] != 0){
-//       return console.log("WIN");
-//     }
+// function resetGame(){
+//     gameOver = false;
+//     startingPlayer = (startingPlayer === player1) ? player2: player1;
+//     console.log("Starting Player:", startingPlayer);
+//     currentPlayer = startingPlayer;
+//     displayTurn();
 // }

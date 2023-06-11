@@ -1,73 +1,79 @@
+@font-face {
+    font-family: "star-wars";
+    src: url(./fonts/Starjedi.ttf);
+}
+
+body{
+    background-image: url(./assets/starwars.jpeg);
+    background-size: cover;
+}
+
+#title{
+    color: yellow;
+}
+
+#star-wars{
+    font-family: star-wars;
+    color: yellow;
+    font-size: 30px;
+}
+
+
 .player-2,
 .player-1 {
     height: 100vh;
     width: 25vw;
-    border: solid black;
-    background-image: url(https://t4.ftcdn.net/jpg/01/62/92/63/360_F_162926341_LKyle11bM4ODu3GrbjmropDS2jhEsso4.jpg);
-    background-size: cover;
     display: flex;
     justify-content: center;
 }
-
 
 .board {
     height: 100vh;
     width: 50vw;
-    border: solid black;
+}
+
+.player-1 {
+    background-color: rgba(242, 6, 6,.5);
 }
 
 .player-2 {
-    width: 100vh;
-    width: 25vw;
-    border: solid black;
-    display: flex;
-    justify-content: center;
-    
+    background-color: rgba(0,0,255,.5);
 }
 
 body{
     display: flex;
 }
 
-.player-1-wins-box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    height: 10%;
-    border: solid blue;
-    margin-top: 20%;
-}
-
+.player-1-wins-box,
 .player-2-wins-box{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50%;
-    height: 10%;
-    border: solid blue;
+    width: 75%;
+    height: 20%;
+    background-color: rgba(5, 4, 4,.5);
     margin-top: 20%;
 }
 
 .turn-display{
     height: 30%;
-    border: solid green;
     display: flex;
-    justify-content: center;
-    align-items: end;
+    flex-direction: column;
+    align-items: center;
 }
+
 .board{
     display: flex;
     flex-direction: column;
-    border: solid purple;
 }
+
 #display-turn{
-    border: solid yellow;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(245, 245, 245,.5);
+    
 }
 
 .board-section{
@@ -75,13 +81,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid orange;
 }
 
 .board-display{
-    background-image: url(https://codebrainer.azureedge.net/images/tic-tac-toe_04.png);
-    background-size: cover;
-    background-position: center;
+    background-color: rgba(170, 226, 239, 0.5);
     width: 75%;
     height: 75%;
     display: grid;
@@ -93,6 +96,25 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid black;
     cursor: pointer;
+    border: solid black;
+}
+
+#title{
+    font-size: 40px;
+}
+
+#display-turn,
+#player-1-icon,
+#player-2-icon{
+    font-size: 40px;
+}
+#player-2-wins,
+#player-1-wins{
+    font-size: 30px;
+    color: white;
+}
+
+.game-board-icon{
+    font-size: 45px;
 }

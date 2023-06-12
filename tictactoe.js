@@ -1,3 +1,4 @@
+//Selectors.
 var boardDisplay = document.querySelector('.board-display');
 var player1Wins = document.getElementById('player-1-wins');
 var player2Wins = document.getElementById('player-2-wins');
@@ -5,8 +6,16 @@ var turnBox = document.getElementById('display-turn');
 var player1Token = document.getElementById('player-1-token');
 var player2Token = document.getElementById('player-2-token');
 
+//Globals to hold game values and player values.
+var gameBoard = ['','','','','','','','',''];
+var player1 = createPlayer(1,'🟥');
+var player2 = createPlayer(2,'🔵');
+var currentPlayer = player1;
+var startingPlayer = player1;
+var gameOver = false;
 
 
+// Event Listeners
 window.addEventListener('load', showBoard)
 window.addEventListener('load', function(e){
 displayTurn(undefined)
@@ -18,14 +27,6 @@ boardDisplay.addEventListener('click', function(e){
     }
 });
 
-
-var gameBoard = ['','','','','','','','',''];
-
-var player1 = createPlayer(1,'🟥');
-var player2 = createPlayer(2,'🔵');
-var currentPlayer = player1;
-var startingPlayer = player1;
-var gameOver = false;
 
 
 function createPlayer(id,token){
@@ -56,8 +57,6 @@ function checkWin() {
         return true;
     }
 }
-
-
 
 function showBoard(){
     boardDisplay.innerHTML = "";

@@ -100,7 +100,15 @@ body{
     align-items: center;
     cursor: pointer;
     border: solid black;
+    transition: background-color 0.3s
+    
 }
+
+.mini-grid:hover{
+    background-color: rgba(255,255,0,.5);
+}
+
+
 
 #title{
     font-size: 40px;

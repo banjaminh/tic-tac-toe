@@ -20,7 +20,6 @@ boardDisplay.addEventListener('click', function(e){
 
 
 var gameBoard = ['','','','','','','','',''];
-
 var player1 = createPlayer(1,'🟥');
 var player2 = createPlayer(2,'🔵');
 var currentPlayer = player1;
@@ -56,8 +55,6 @@ function checkWin() {
         return true;
     }
 }
-
-
 
 function showBoard(){
     boardDisplay.innerHTML = "";
@@ -106,9 +103,9 @@ function resetBoard(){
     for (var i = 0; i < gameBoard.length ; i++){
         gameBoard[i] = '';
     }
-    gameOver = false;
     startingPlayer = (startingPlayer === player1) ? player2: player1;
     currentPlayer = startingPlayer;
+    gameOver = false;
     displayTurn();
     showBoard();
 }

@@ -33,11 +33,11 @@ body{
 }
 
 .player-1 {
-    background-color: rgba(242, 6, 6,.5);
+    background-color: rgba(242, 6, 6,.3);
 }
 
 .player-2 {
-    background-color: rgba(0,0,255,.5);
+    background-color: rgba(0,0,255,.3);
 }
 
 body{
@@ -56,11 +56,12 @@ body{
     margin-top: 20%;
 }
 
-.turn-display{
+.game-info{
     height: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .board{
@@ -72,12 +73,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(245, 245, 245,.5);
-    
-}
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 33px;
+ }
 
 .board-section{
-    height: 70%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,11 +106,11 @@ body{
     font-size: 40px;
 }
 
-#display-turn,
-#player-1-icon,
-#player-2-icon{
+#player-1-token,
+#player-2-token{
     font-size: 40px;
 }
+
 #player-2-wins,
 #player-1-wins{
     font-size: 30px;

@@ -1,12 +1,16 @@
 var boardDisplay = document.querySelector('.board-display');
-var player1Box = document.getElementById('player-1-wins');
-var player2Box = document.getElementById('player-2-wins');
+var player1Wins = document.getElementById('player-1-wins');
+var player2Wins = document.getElementById('player-2-wins');
 var turnBox = document.getElementById('display-turn');
+var player1Token = document.getElementById('player-1-token');
+var player2Token = document.getElementById('player-2-token');
+
 
 
 window.addEventListener('load', showBoard)
 window.addEventListener('load', function(e){
 displayTurn(undefined)
+updatePlayers()
 });
 boardDisplay.addEventListener('click', function(e){
     if(!gameOver){
@@ -84,7 +88,7 @@ function playerMove(e){
         gameOver = true;
         displayTurn('win');
         setTimeout(resetBoard, 3000);
-        updateWin();
+        updatePlayers();
         return;
     }
     else if(checkDraw()){
@@ -131,15 +135,10 @@ function displayTurn(condition){
     }    
 }
 
-function updateWin(){
-    player1Box.innerText = `${player1.wins} wins`
-    player2Box.innerText = `${player2.wins} wins`
+function updatePlayers(){
+    player1Token.innerText = `${player1.token}`;
+    player2Token.innerText = `${player2.token}`;
+    player1Wins.innerText = `${player1.wins} wins`
+    player2Wins.innerText = `${player2.wins} wins`
 }
 
-// function resetGame(){
-//     gameOver = false;
-//     startingPlayer = (startingPlayer === player1) ? player2: player1;
-//     console.log("Starting Player:", startingPlayer);
-//     currentPlayer = startingPlayer;
-//     displayTurn();
-// }

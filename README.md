@@ -15,3 +15,23 @@ In order to use this projet, please follow the steps below:
 
 ### Preview of the App: 
 ![game working](https://ezgif.com/maker/ezgif-2-6afbcd81-gif)
+
+
+### Context: 
+
+I worked on this for approximately 4 days. I am on my 5th week of Module 1.
+
+### Learning Goals:
+
+Learning how to build an application combinition HTML, CSS and Javascript. Allow user interaction to manipulate the DOM and apply logic through Javascript.
+
+### Wins + Challenges:
+
+**Wins :** 
+
+- Gained a better understanding of how Javascript/CSS/HTML work and interact with eachother through the DOM. 
+- Implemented constant logic checks while the user interacts with the application.
+
+**Challenges :**
+
+- Using CSS to display the desired elements.

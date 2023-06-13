@@ -14,8 +14,7 @@ In order to use this projet, please follow the steps below:
 -View and interact with the project live in your browser by using "open index.html" in your terminal.
 
 ### Preview of the App: 
-![game working](https://ezgif.com/maker/ezgif-2-6afbcd81-gif)
-
+![ezgif com-gif-maker](https://github.com/banjaminh/tic-tac-toe/assets/128344939/96a34b9c-80cd-4dcd-bbe9-fbcfca89dd49)
 
 ### Context: 
 
